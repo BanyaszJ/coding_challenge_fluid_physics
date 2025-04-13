@@ -22,12 +22,11 @@ RED = (255, 0, 0)  # for text
 # --- Init ---
 # Init
 pygame.init()
-
-screen_width, screen_height = pygame.display.list_modes()[0]  # OS max resolution
+screen_width, screen_height = 1024, 768
 
 COLS = len(INPUT_MAP)
-ROWS = max(INPUT_MAP) + 2  # Add vertical buffer
-BLOCK_SIZE = min(screen_width // COLS, screen_height // ROWS) - 5
+ROWS = max(INPUT_MAP)+2
+BLOCK_SIZE = min(screen_width // COLS, screen_height // ROWS)
 
 WINDOW_WIDTH = BLOCK_SIZE * COLS
 WINDOW_HEIGHT = BLOCK_SIZE * ROWS
@@ -37,11 +36,10 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE
 
 clock = pygame.time.Clock()
 pygame.display.set_caption("Magyar vízügyi igazgatóság vízállás követési alosztálya.mp3.exe")
-font = pygame.font.SysFont('Arial', 28)  # You can change font name and size
+font = pygame.font.SysFont('Arial', 28)
 
 falling_block = None
 last_fall_time = pygame.time.get_ticks()
-
 # --- Init matrix ---
 # 0 = empty, 1 = water, 2 = terrain
 matrix = [[0 for _ in range(COLS)] for _ in range(ROWS)]
